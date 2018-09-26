@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using UserManagement_Angular.Models;
 
 namespace UserManagement_Angular.Controllers
@@ -90,6 +89,7 @@ namespace UserManagement_Angular.Controllers
                 return BadRequest(ModelState);
             }
 
+            user.CreationDate = DateTime.Now;
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
