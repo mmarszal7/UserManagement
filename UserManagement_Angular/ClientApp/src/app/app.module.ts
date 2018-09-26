@@ -6,29 +6,32 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { UsersComponent } from './users/users.component';
+import { GroupsComponent } from './groups/groups.component';
+import { UserGroupsComponent } from './user-groups/user-groups.component';
+import { WebApiService } from './shared/services/web-api.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent
+    UsersComponent,
+    GroupsComponent,
+    UserGroupsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: '', component: UsersComponent, pathMatch: 'full' },
+      { path: 'groups', component: GroupsComponent },
+      { path: 'user-groups', component: UserGroupsComponent },
     ])
   ],
-  providers: [],
+  providers: [
+      WebApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
