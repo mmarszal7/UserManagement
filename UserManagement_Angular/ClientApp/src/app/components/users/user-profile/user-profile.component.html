@@ -1,0 +1,32 @@
+<h1>User Profile</h1>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt> Name </dt>
+        <dd> {{ user?.name }} </dd>
+
+        <dt> Email </dt>
+        <dd> {{ user?.email }} </dd>
+
+        <dt> Creation Date</dt>
+        <dd> {{ user?.creationDate }} </dd>
+    </dl>
+
+    <div *ngIf="user?.userGroups?.length > 0">
+        <h4>{{ user?.name }} Groups</h4>
+        <table class="table">
+            <tr>
+                <th>Group Name</th>
+            </tr>
+            <tr *ngFor="let userGroup of user.userGroups">
+                <td> {{ userGroup.group.name }} </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+<p>
+    <a [routerLink]='["/users"]'>Back to List</a>
+</p>

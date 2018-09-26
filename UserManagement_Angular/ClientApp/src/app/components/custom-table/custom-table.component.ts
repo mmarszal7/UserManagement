@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
     selector: 'app-custom-table',
@@ -9,6 +9,8 @@ export class CustomTableComponent implements OnInit {
     @Input() data: any[];
 
     @Input() columns: Array<any>;
+
+    @Output() rowClick = new EventEmitter();
 
     rows: Array<any> = [];
 
@@ -123,5 +125,9 @@ export class CustomTableComponent implements OnInit {
         const sortedData = this.changeSort(filteredData, this.config);
         this.rows = page && config.paging ? this.changePage(page, sortedData) : sortedData;
         this.length = sortedData.length;
+    }
+
+    public onCellClick(data: any): any {
+        this.rowClick.emit(data.row);
     }
 }

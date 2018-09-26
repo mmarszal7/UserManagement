@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { WebApiService } from '../../shared/services/web-api.service';
 import { User } from '../../shared/models/user';
+import { Router } from '@angular/router';
+import { UsersService } from '../../shared/services/users.service';
 
 @Component({
     selector: 'app-users',
@@ -16,7 +17,11 @@ export class UsersComponent {
         { title: 'Creation date', name: 'creationDate' }
     ];
 
-    constructor(dataService: WebApiService) {
+    constructor(private dataService: UsersService, private router: Router) {
         dataService.getUsers().subscribe(u => this.users = u);
+    }
+
+    onClick(user: User) {
+        this.router.navigateByUrl(`/users/${user.id}`);
     }
 }

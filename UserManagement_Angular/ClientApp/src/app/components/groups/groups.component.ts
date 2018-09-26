@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Group } from '../../shared/models/group';
-import { WebApiService } from '../../shared/services/web-api.service';
+import { Router } from '@angular/router';
+import { GroupsService } from '../../shared/services/groups.service';
 
 @Component({
     selector: 'app-groups-component',
@@ -14,7 +15,11 @@ export class GroupsComponent {
         { title: 'Name', name: 'name' },
     ];
 
-    constructor(dataService: WebApiService) {
+    constructor(private dataService: GroupsService, private router: Router) {
         dataService.getGroups().subscribe(g => this.groups = g);
+    }
+
+    onClick(group: Group) {
+        this.router.navigateByUrl(`/groups/${group.id}`);
     }
 }

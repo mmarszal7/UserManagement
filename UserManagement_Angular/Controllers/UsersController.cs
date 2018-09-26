@@ -35,7 +35,10 @@ namespace UserManagement_Angular.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.Users
+                .Include(ug => ug.UserGroups)
+                .ThenInclude(g => g.Group)
+                .SingleOrDefaultAsync(u => u.Id == id);
 
             if (user == null)
             {

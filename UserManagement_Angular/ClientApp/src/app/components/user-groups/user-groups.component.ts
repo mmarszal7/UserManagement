@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { WebApiService } from '../../shared/services/web-api.service';
 import { User } from '../../shared/models/user';
+import { UsersService } from '../../shared/services/users.service';
 
 @Component({
   selector: 'app-user-groups',
@@ -10,7 +10,7 @@ export class UserGroupsComponent {
 
     users: User[];
 
-    constructor(dataService: WebApiService) {
+    constructor(dataService: UsersService) {
         dataService.getUsers().subscribe(u => this.users = u);
     }
 }

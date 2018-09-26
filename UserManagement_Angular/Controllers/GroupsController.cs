@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using UserManagement_Angular.Models;
 
 namespace UserManagement_Angular.Controllers
@@ -36,7 +34,10 @@ namespace UserManagement_Angular.Controllers
                 return BadRequest(ModelState);
             }
 
-            var @group = await _context.Groups.FindAsync(id);
+            var @group = await _context.Groups
+                .Include(ug => ug.UserGroups)
+                .ThenInclude(g => g.User)
+                .SingleOrDefaultAsync(u => u.Id == id);
 
             if (@group == null)
             {

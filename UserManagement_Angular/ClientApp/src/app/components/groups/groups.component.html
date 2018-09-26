@@ -1,2 +1,2 @@
 <h1>Groups</h1>
-<app-custom-table *ngIf="groups?.length > 0" [data]="groups" [columns]="columns"></app-custom-table>
+<app-custom-table *ngIf="groups?.length > 0" [data]="groups" [columns]="columns" (rowClick)="onClick($event)"></app-custom-table>

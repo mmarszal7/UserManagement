@@ -1,0 +1,26 @@
+<h1>Group profile</h1>
+
+<div>
+    <h4>Group</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt> Name </dt>
+        <input [ngModel]="group?.name"/>
+        <button class="btn" (click)="editName()">Save</button>
+    </dl>
+
+    <div *ngIf="group?.userGroups?.length > 0">
+        <h4>{{ group?.name }} Users</h4>
+        <table class="table">
+            <tr>
+                <th>User Name</th>
+            </tr>
+            <tr *ngFor="let userGroup of group.userGroups">
+                <td> {{ userGroup.user.name }} </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<p>
+    <a [routerLink]='["/groups"]'>Back to List</a>
+</p>

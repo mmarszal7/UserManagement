@@ -8,6 +8,6 @@ namespace UserManagement_Angular.Models
 
         public string Name { get; set; }
 
-        public virtual List<UserGroups> UserGroups { get; set; }
+        public virtual ICollection<UserGroups> UserGroups { get; set; }
     }
 }

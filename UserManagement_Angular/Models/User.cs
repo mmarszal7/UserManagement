@@ -15,6 +15,6 @@ namespace UserManagement_Angular.Models
 
         public DateTime CreationDate { get; set; }
 
-        public virtual List<UserGroups> UserGroups { get; set; }
+        public virtual ICollection<UserGroups> UserGroups { get; set; }
     }
 }
