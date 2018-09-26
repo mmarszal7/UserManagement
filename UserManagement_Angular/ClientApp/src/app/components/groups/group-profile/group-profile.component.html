@@ -5,12 +5,20 @@
     <hr />
     <dl class="dl-horizontal">
         <dt> Name </dt>
-        <input [ngModel]="group?.name"/>
-        <button class="btn" (click)="editName()">Save</button>
+        <dd>
+            <form [formGroup]="form">
+                <input class="form-control" type="text" formControlName="name" />
+                <br>
+                <span class="text-danger" *ngIf="form.controls['name'].hasError('minlength')">Name has to be longer
+                    than 3 characters!<br></span>
+                <button class="btn" type="submit" [disabled]="!form.valid" (click)="
+                    editName()">Save</button>
+            </form>
+        </dd>
     </dl>
 
     <div *ngIf="group?.userGroups?.length > 0">
-        <h4>{{ group?.name }} Users</h4>
+        <h4>Users</h4>
         <table class="table">
             <tr>
                 <th>User Name</th>
