@@ -1,24 +1,15 @@
-<h1>Group profile</h1>
+<h1>{{ group?.name }} group profile</h1>
 
 <div>
-    <h4>Group</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt> Name </dt>
-        <dd>
-            <form [formGroup]="form">
-                <input class="form-control" type="text" formControlName="name" />
-                <br>
-                <span class="text-danger" *ngIf="form.controls['name'].hasError('minlength')">Name has to be longer
-                    than 3 characters!<br></span>
-                <button class="btn" type="submit" [disabled]="!form.valid" (click)="
-                    editName()">Save</button>
-            </form>
-        </dd>
-    </dl>
+    <app-edit-group [group]="group" (save)="onSave($event)"></app-edit-group>
 
+    <hr>
+    <h3>Delete this group</h3>
+    <button class="btn" (click)="deleteGroup()">Delete</button>
+
+    <br> <br>
+    <h3>Users assigned to this group</h3>
     <div *ngIf="group?.userGroups?.length > 0">
-        <h4>Users</h4>
         <table class="table">
             <tr>
                 <th>User Name</th>

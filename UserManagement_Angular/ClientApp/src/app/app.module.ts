@@ -16,6 +16,8 @@ import { GroupProfileComponent } from './components/groups/group-profile/group-p
 import { UserProfileComponent } from './components/users/user-profile/user-profile.component';
 import { UsersService } from './shared/services/users.service';
 import { GroupsService } from './shared/services/groups.service';
+import { EditGroupComponent } from './components/groups/edit-group/edit-group.component';
+import { EditUserComponent } from './components/users/edit-user/edit-user.component';
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/users', pathMatch: 'full' },
@@ -36,6 +38,8 @@ const appRoutes: Routes = [
         CustomTableComponent,
         GroupProfileComponent,
         UserProfileComponent,
+        EditGroupComponent,
+        EditUserComponent
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

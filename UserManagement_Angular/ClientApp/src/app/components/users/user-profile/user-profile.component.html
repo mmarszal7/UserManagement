@@ -1,21 +1,15 @@
-<h1>User Profile</h1>
+<h1>{{ user?.name }} Profile</h1>
 
 <div>
-    <h4>User</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt> Name </dt>
-        <dd> {{ user?.name }} </dd>
+    <app-edit-user [user]="user" (save)="onSave($event)"></app-edit-user>
 
-        <dt> Email </dt>
-        <dd> {{ user?.email }} </dd>
+    <hr>
+    <h3>Delete this user</h3>
+    <button class="btn" (click)="deleteUser()">Delete</button>
 
-        <dt> Creation Date</dt>
-        <dd> {{ user?.creationDate }} </dd>
-    </dl>
-
+    <br> <br>
+    <h3>{{ user?.name }}'s Groups</h3>
     <div *ngIf="user?.userGroups?.length > 0">
-        <h4>{{ user?.name }} Groups</h4>
         <table class="table">
             <tr>
                 <th>Group Name</th>

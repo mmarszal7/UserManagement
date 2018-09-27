@@ -26,4 +26,22 @@ export class GroupsService {
             map(group => group as Group)
         );
     }
+
+    createGroup(group: Group): Observable<Group> {
+        return this.http.post(this.url, group).pipe(
+            map(g => group)
+        );
+    }
+
+    updateGroup(group: Group): Observable<Group> {
+        return this.http.put(this.url + '/' + group.id, group).pipe(
+            map(g => group)
+        );
+    }
+
+    deleteGroup(group: Group): Observable<Group> {
+        return this.http.delete(this.url + '/' + group.id).pipe(
+            map(g => group)
+        );
+    }
 }

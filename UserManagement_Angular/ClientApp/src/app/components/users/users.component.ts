@@ -24,4 +24,10 @@ export class UsersComponent {
     onClick(user: User) {
         this.router.navigateByUrl(`/users/${user.id}`);
     }
+
+    onSave(user: User) {
+        this.dataService.createUser(user).subscribe(u => {
+            this.router.navigateByUrl('/users');
+        });
+    }
 }

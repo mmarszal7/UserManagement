@@ -1,0 +1,17 @@
+<div>
+    <h3>Group details</h3>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div>
+            <label> Name </label>
+            <input class="form-control" type="text" formControlName="name" />
+        </div>
+
+        <br>
+        <span class="text-danger" *ngIf="form.controls['name'].hasError('minlength')">Name has to be longer
+            than 3
+            characters!<br></span>
+        <span class="text-danger" *ngIf="form.controls['name'].hasError('required')">Name is required!<br></span>
+
+        <button class="btn" type="submit" [disabled]="!form.valid">Save</button>
+    </form>
+</div>

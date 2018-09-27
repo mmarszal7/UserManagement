@@ -1,1 +1,45 @@
 <h1>User Groups</h1>
+
+<h3>Assign user to group</h3>
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-horizontal">
+        <div class="form-group" style="display: inline-block">
+            <div class="col-md-10">
+                <select class="form-control" style="width: 200px" formControlName="userID">
+                    <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" style="display: inline-block">
+            <div class="col-md-10">
+                <select class="form-control" style="width: 200px" formControlName="groupID">
+                    <option *ngFor="let group of groups" [value]="group.id">{{ group.name }}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group" style="display: inline-block">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" [disabled]="!form.valid" value="Assign" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<h2>User Groups</h2>
+<table class="table">
+    <tr>
+        <th> User Name </th>
+        <th> User Email </th>
+        <th> Group Name </th>
+        <th></th>
+    </tr>
+    <tbody *ngFor="let user of users">
+        <tr *ngFor="let group of user.userGroups">
+            <td> {{ user.name }} </td>
+            <td> {{ user.email }} </td>
+            <td> {{ group.name }} </td>
+        </tr>
+    </tbody>
+
+</table>

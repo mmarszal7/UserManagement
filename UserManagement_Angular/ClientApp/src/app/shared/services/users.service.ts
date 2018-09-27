@@ -27,4 +27,22 @@ export class UsersService {
             map(user => user as User),
         );
     }
+
+    createUser(user: User): Observable<User> {
+        return this.http.post(this.url, user).pipe(
+            map(u => user)
+        );
+    }
+
+    updateUser(user: User): Observable<User> {
+        return this.http.put(this.url + '/' + user.id, user).pipe(
+            map(u => user)
+        );
+    }
+
+    deleteUser(user: User): Observable<User> {
+        return this.http.delete(this.url + '/' + user.id).pipe(
+            map(u => user)
+        );
+    }
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Group } from '../../shared/models/group';
 import { Router } from '@angular/router';
 import { GroupsService } from '../../shared/services/groups.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-groups-component',
@@ -21,5 +22,11 @@ export class GroupsComponent {
 
     onClick(group: Group) {
         this.router.navigateByUrl(`/groups/${group.id}`);
+    }
+
+    onSave(group: Group) {
+        this.dataService.createGroup(group).subscribe(u => {
+            this.router.navigateByUrl('/groups');
+        });
     }
 }
