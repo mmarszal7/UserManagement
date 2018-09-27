@@ -12,9 +12,9 @@ namespace UserManagement_Angular.Tests
     {
         UsersController _controller;
 
-        public Users_(UsersController controller)
+        public Users_(DBContext dBContext)
         {
-            _controller = controller;
+            _controller = new UsersController(dBContext);
         }
 
         [TestMethod]

@@ -12,9 +12,9 @@ namespace UserManagement_Angular.Tests
     {
         GroupsController _controller;
 
-        public Groups_(GroupsController controller)
+        public Groups_(DBContext dBContext): base()
         {
-            _controller = controller;
+            _controller = new GroupsController(dBContext);
         }
 
         [TestMethod]
