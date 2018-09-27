@@ -99,6 +99,17 @@ namespace UserManagement_Angular.Controllers
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
 
+        // POST: api/Users/5
+        [HttpPost("{id}")]
+        public async Task<IActionResult> AssingUserToGroup([FromRoute] int id, [FromBody] UserGroups userGroups)
+        {
+            _context.UserGroups.Add(userGroups);
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser([FromRoute] int id)

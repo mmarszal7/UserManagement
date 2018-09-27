@@ -35,7 +35,8 @@ export class UserGroupsComponent {
             const group = { ...this.groups.find(g => g.id.toString() === this.form.value.groupID) };
 
             user.userGroups.push({ userId: user.id, groupId: group.id, group: group } as UserGroups);
-            this.usersService.updateUser(user).subscribe();
+            const userGroup = { groupId: this.form.value.groupID, userId: this.form.value.userID } as UserGroups;
+            this.usersService.assingUserToGroup(userGroup).subscribe();
         }
     }
 }

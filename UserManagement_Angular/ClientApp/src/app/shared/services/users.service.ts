@@ -4,6 +4,7 @@ import { User } from '../models/user';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators/map';
 import { tap } from 'rxjs/operators/tap';
+import { UserGroups } from '../models/user-groups';
 
 @Injectable()
 export class UsersService {
@@ -43,6 +44,12 @@ export class UsersService {
     deleteUser(user: User): Observable<User> {
         return this.http.delete(this.url + '/' + user.id).pipe(
             map(u => user)
+        );
+    }
+
+    assingUserToGroup(userGroups: UserGroups): Observable<UserGroups> {
+        return this.http.post(this.url + '/' + userGroups.userId, userGroups).pipe(
+            map(u => userGroups)
         );
     }
 }
