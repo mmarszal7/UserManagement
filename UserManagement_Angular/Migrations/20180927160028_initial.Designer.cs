@@ -10,8 +10,8 @@ using UserManagement_Angular.Models;
 namespace UserManagement_Angular.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20180926090544_seed")]
-    partial class seed
+    [Migration("20180927160028_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -57,9 +57,9 @@ namespace UserManagement_Angular.Migrations
                     b.ToTable("Users");
 
                     b.HasData(
-                        new { Id = 1, CreationDate = new DateTime(2018, 9, 26, 11, 5, 43, 535, DateTimeKind.Local), Email = "john@doe.com", Name = "John" },
-                        new { Id = 2, CreationDate = new DateTime(2018, 9, 26, 11, 5, 43, 559, DateTimeKind.Local), Email = "tom@jerry.com", Name = "Tom" },
-                        new { Id = 3, CreationDate = new DateTime(2018, 9, 26, 11, 5, 43, 559, DateTimeKind.Local), Email = "frank@goodman.com", Name = "Frank" }
+                        new { Id = 1, CreationDate = new DateTime(2018, 9, 27, 18, 0, 26, 543, DateTimeKind.Local), Email = "john@doe.com", Name = "John" },
+                        new { Id = 2, CreationDate = new DateTime(2018, 9, 27, 18, 0, 26, 548, DateTimeKind.Local), Email = "tom@jerry.com", Name = "Tom" },
+                        new { Id = 3, CreationDate = new DateTime(2018, 9, 27, 18, 0, 26, 548, DateTimeKind.Local), Email = "frank@goodman.com", Name = "Frank" }
                     );
                 });
 

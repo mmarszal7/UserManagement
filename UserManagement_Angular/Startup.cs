@@ -76,7 +76,7 @@ namespace UserManagement_Angular
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetRequiredService<DBContext>();
-                context.Database.Migrate();
+                context.Database.EnsureCreated();
             }
         }
     }
