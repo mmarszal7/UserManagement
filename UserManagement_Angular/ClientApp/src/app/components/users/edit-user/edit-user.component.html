@@ -1,26 +1,24 @@
 <div>
-    <h3>User details</h3>
     <form [formGroup]="form" (ngSubmit)="submit()">
         <div>
             <label> Name </label>
             <input class="form-control" type="text" formControlName="name" />
         </div>
-        <br>
         <div>
             <label> Email </label>
             <input class="form-control" type="text" formControlName="email" />
         </div>
-        <br>
         <div>
             <label> Creation Date </label>
             <label>{{ user?.creationDate | date: 'shortDate' }}</label>
         </div>
 
-        <br>
-        <span class="text-danger" *ngIf="form.controls['name'].hasError('minlength')">Name has to be longer than 3
+        <span class="text-danger" *ngIf="form.controls['name'].hasError('minlength') && form.dirty">Name has to be
+            longer than 3
             characters!<br></span>
-        <span class="text-danger" *ngIf="form.controls['email'].hasError('email')">Email is not valid!<br></span>
-        <span class="text-danger" *ngIf="form.controls['email'].hasError('required') || form.controls['name'].hasError('required')">Both values are required!<br></span>
+        <span class="text-danger" *ngIf="form.controls['email'].hasError('email') && form.dirty">Email is not valid!<br></span>
+        <span class="text-danger" *ngIf="(form.controls['email'].hasError('required') || form.controls['name'].hasError('required')) && form.dirty">Both
+            values are required!<br></span>
         <button class="btn" type="submit" [disabled]="!form.valid">Save</button>
     </form>
 </div>

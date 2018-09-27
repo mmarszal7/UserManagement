@@ -1,7 +1,8 @@
 <h1>Users</h1>
 
-<a (click)="showForm = true">Create new group</a>
-<app-edit-user *ngIf="showForm" (save)="onSave($event)"></app-edit-user>
-
-<hr>
+<h3>List of users:</h3>
 <app-custom-table *ngIf="users?.length > 0" [data]="users" [columns]="columns" (rowClick)="onClick($event)"></app-custom-table>
+
+<h3>Create new User:</h3>
+<button class="btn" *ngIf="!showForm" (click)="showForm = true">Create new user</button>
+<app-edit-user *ngIf="showForm" (save)="onSave($event)"></app-edit-user>

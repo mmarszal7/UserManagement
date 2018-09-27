@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
     selector: 'app-edit-user',
     templateUrl: './edit-user.component.html',
+    styleUrls: ['./edit-user.component.css']
 })
 export class EditUserComponent implements OnInit {
 
@@ -20,9 +21,11 @@ export class EditUserComponent implements OnInit {
     constructor() { }
 
     ngOnInit(): void {
-        if (this.user) {
-            this.form.patchValue({ name: this.user.name, email: this.user.email });
+        if (!this.user) {
+            this.user = { name: '', email: '', creationDate: new Date() } as User;
         }
+
+        this.form.patchValue({ name: this.user.name, email: this.user.email });
     }
 
     submit() {

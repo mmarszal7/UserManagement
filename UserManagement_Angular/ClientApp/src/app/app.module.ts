@@ -1,3 +1,5 @@
+import { AuthGuard } from './shared/services/auth.guard';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -18,12 +20,13 @@ import { UsersService } from './shared/services/users.service';
 import { GroupsService } from './shared/services/groups.service';
 import { EditGroupComponent } from './components/groups/edit-group/edit-group.component';
 import { EditUserComponent } from './components/users/edit-user/edit-user.component';
+import { AuthService } from './shared/services/auth.service';
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/users', pathMatch: 'full' },
-    { path: 'users/:id', component: UserProfileComponent },
+    { path: 'users/:id', component: UserProfileComponent, canActivate: [AuthGuard] },
     { path: 'users', component: UsersComponent },
-    { path: 'groups/:id', component: GroupProfileComponent },
+    { path: 'groups/:id', component: GroupProfileComponent, canActivate: [AuthGuard] },
     { path: 'groups', component: GroupsComponent },
     { path: 'user-groups', component: UserGroupsComponent },
 ];
@@ -47,12 +50,15 @@ const appRoutes: Routes = [
         FormsModule,
         ReactiveFormsModule,
         Ng2TableModule,
+        LoadingBarHttpClientModule,
         PaginationModule.forRoot(),
         RouterModule.forRoot(appRoutes)
     ],
     providers: [
         UsersService,
-        GroupsService
+        GroupsService,
+        AuthService,
+        AuthGuard,
     ],
     bootstrap: [AppComponent]
 })

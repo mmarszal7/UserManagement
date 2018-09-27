@@ -1,7 +1,8 @@
 <h1>Groups</h1>
 
-<a (click)="showForm = true">Create new group</a>
-<app-edit-group *ngIf="showForm" (save)="onSave($event)"></app-edit-group>
-
-<hr>
+<h3>List of groups:</h3>
 <app-custom-table *ngIf="groups?.length > 0" [data]="groups" [columns]="columns" (rowClick)="onClick($event)"></app-custom-table>
+
+<h3>Create new group:</h3>
+<button class="btn" *ngIf="!showForm" (click)="showForm = true">Create new group</button>
+<app-edit-group *ngIf="showForm" (save)="onSave($event)"></app-edit-group>

@@ -3,13 +3,8 @@
 <div>
     <app-edit-user *ngIf="user" [user]="user" (save)="onSave($event)"></app-edit-user>
 
-    <hr>
-    <h3>Delete this user</h3>
-    <button class="btn" (click)="deleteUser()">Delete</button>
-
-    <br> <br>
-    <h3>{{ user?.name }}'s Groups</h3>
-    <div *ngIf="user?.userGroups?.length > 0">
+    <h3>{{ user?.name }}'s groups:</h3>
+    <div>
         <table class="table">
             <tr>
                 <th>Group Name</th>
@@ -20,7 +15,6 @@
         </table>
     </div>
 
+    <h3>Delete this user</h3>
+    <button class="btn" (click)="deleteUser()">Delete</button>
 </div>
-<p>
-    <a [routerLink]='["/users"]'>Back to List</a>
-</p>
