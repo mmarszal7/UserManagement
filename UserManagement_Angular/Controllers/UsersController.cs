@@ -23,7 +23,7 @@ namespace UserManagement_Angular.Controllers
         [HttpGet]
         public IEnumerable<User> GetUsers()
         {
-            return _context.Users;
+            return _context.Users.Include(ug => ug.UserGroups).ThenInclude(g => g.Group);
         }
 
         // GET: api/Users/5

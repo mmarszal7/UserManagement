@@ -25,8 +25,8 @@ export class GroupsComponent {
     }
 
     onSave(group: Group) {
-        this.dataService.createGroup(group).subscribe(u => {
-            this.router.navigateByUrl('/groups');
+        this.dataService.createGroup(group).subscribe(g => {
+            this.router.navigateByUrl('/groups/' + g.id);
         });
     }
 }

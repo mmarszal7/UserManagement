@@ -29,7 +29,7 @@ export class GroupsService {
 
     createGroup(group: Group): Observable<Group> {
         return this.http.post(this.url, group).pipe(
-            map(g => group)
+            map(g => g as Group)
         );
     }
 

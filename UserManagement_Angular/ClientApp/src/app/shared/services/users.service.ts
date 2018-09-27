@@ -30,7 +30,7 @@ export class UsersService {
 
     createUser(user: User): Observable<User> {
         return this.http.post(this.url, user).pipe(
-            map(u => user)
+            map(u => u as User)
         );
     }
 

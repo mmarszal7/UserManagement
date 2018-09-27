@@ -1,7 +1,7 @@
 <h1>{{ group?.name }} group profile</h1>
 
 <div>
-    <app-edit-group [group]="group" (save)="onSave($event)"></app-edit-group>
+    <app-edit-group *ngIf="group" [group]="group" (save)="onSave($event)"></app-edit-group>
 
     <hr>
     <h3>Delete this group</h3>

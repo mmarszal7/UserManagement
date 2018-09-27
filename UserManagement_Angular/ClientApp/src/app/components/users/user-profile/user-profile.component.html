@@ -1,7 +1,7 @@
 <h1>{{ user?.name }} Profile</h1>
 
 <div>
-    <app-edit-user [user]="user" (save)="onSave($event)"></app-edit-user>
+    <app-edit-user *ngIf="user" [user]="user" (save)="onSave($event)"></app-edit-user>
 
     <hr>
     <h3>Delete this user</h3>

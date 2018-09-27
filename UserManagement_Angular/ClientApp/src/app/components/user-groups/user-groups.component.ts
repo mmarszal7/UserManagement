@@ -4,10 +4,11 @@ import { UsersService } from '../../shared/services/users.service';
 import { GroupsService } from '../../shared/services/groups.service';
 import { Group } from '../../shared/models/group';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
+import { UserGroups } from '../../shared/models/user-groups';
 
 @Component({
-  selector: 'app-user-groups',
-  templateUrl: './user-groups.component.html'
+    selector: 'app-user-groups',
+    templateUrl: './user-groups.component.html'
 })
 export class UserGroupsComponent {
 
@@ -20,15 +21,21 @@ export class UserGroupsComponent {
         groupID: new FormControl('', [Validators.required]),
     });
 
-    constructor(usersService: UsersService, groupsService: GroupsService) {
-        usersService.getUsers().subscribe(u => this.users = u);
+    constructor(private usersService: UsersService, groupsService: GroupsService) {
+        usersService.getUsers().subscribe(u => {
+            console.log(u);
+            return this.users = u;
+        });
         groupsService.getGroups().subscribe(g => this.groups = g);
     }
 
     submit() {
         if (this.form.valid) {
-            console.log(this.form.value.userID);
-            console.log(this.form.value.groupID);
+            const user = { ...this.users.find(u => u.id.toString() === this.form.value.userID) };
+            const group = { ...this.groups.find(g => g.id.toString() === this.form.value.groupID) };
+
+            user.userGroups.push({ userId: user.id, groupId: group.id, group: group } as UserGroups);
+            this.usersService.updateUser(user).subscribe();
         }
     }
 }
