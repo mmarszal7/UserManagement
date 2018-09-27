@@ -72,6 +72,12 @@ namespace UserManagement_Angular
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<DBContext>();
+                context.Database.Migrate();
+            }
         }
     }
 }
