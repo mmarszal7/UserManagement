@@ -22,10 +22,7 @@ export class UserGroupsComponent {
     });
 
     constructor(private usersService: UsersService, groupsService: GroupsService) {
-        usersService.getUsers().subscribe(u => {
-            console.log(u);
-            return this.users = u;
-        });
+        usersService.getUsers().subscribe(u => this.users = u);
         groupsService.getGroups().subscribe(g => this.groups = g);
     }
 

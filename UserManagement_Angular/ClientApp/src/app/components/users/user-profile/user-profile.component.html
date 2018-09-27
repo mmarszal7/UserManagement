@@ -9,7 +9,7 @@
             <tr>
                 <th>Group Name</th>
             </tr>
-            <tr *ngFor="let userGroup of user.userGroups">
+            <tr *ngFor="let userGroup of user?.userGroups">
                 <td> {{ userGroup.group.name }} </td>
             </tr>
         </table>
