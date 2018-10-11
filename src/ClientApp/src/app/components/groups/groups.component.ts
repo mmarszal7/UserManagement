@@ -12,6 +12,8 @@ export class GroupsComponent {
 
     groups: Group[];
 
+    showForm = true;
+
     columns = [
         { title: 'Name', name: 'name' },
     ];

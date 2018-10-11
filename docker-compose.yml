@@ -1,0 +1,17 @@
+# Informations about db image:
+# https://docs.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-2017
+version: "3"
+services:
+    web:
+        build: .
+        ports:
+            - "5000:80"
+        depends_on:
+            - db
+    db:
+        image: "mcr.microsoft.com/mssql/server:2017-latest"
+        ports:
+            - "1433:1433"
+        environment:
+            SA_PASSWORD: "<localDBpassword>"
+            ACCEPT_EULA: "Y"

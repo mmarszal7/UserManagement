@@ -11,6 +11,8 @@ export class UsersComponent {
 
     users: User[];
 
+    showForm = true;
+
     columns = [
         { title: 'Name', name: 'name' },
         { title: 'Email', name: 'email', },
